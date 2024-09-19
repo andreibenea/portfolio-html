@@ -3,8 +3,20 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    clear: both;
+    height: 90vh;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 5px;
+    background-color: antiquewhite;
+    color: black;
+    border-radius: 5px;
+}
+
 body {
-    box-sizing: border-box;
     background-color: black;
     height: 100vh;
 }
@@ -22,38 +34,17 @@ nav a {
     letter-spacing: 0.15em;
 }
 
-#header-left {
-    float: left;
-    align-items: center;
-}
-
-#header-right {
-    float: right;
-}
-
-main {
-    clear: both;
-    height: 90vh;
+#welcome h1 {
+    font-size: 15vw;
+    max-height: 10vh;
     margin-left: 2%;
-    margin-right: 2%;
-    padding: 5px;
-    background-color: antiquewhite;
-    color: black;
-    border-radius: 5px;
+    margin-top: 10%;
 }
 
-main #welcome p {
-    margin-left: 0.5em;
-    margin-bottom: 0.5em;
-    font-size: 125px;
-    font-weight: bold;
-    line-height: 1;
-}
-
-main #message p {
-    margin-left: 20em;
-    max-width: 75vh;
-    font-size: 22px;
+#message p {
+    font-size: 3vw;
+    margin-left: 10%;
+    margin-right: 5%;
 }
 
 footer {
@@ -61,15 +52,42 @@ footer {
     text-align: center;
 }
 
-@media screen and (max-width: 600px) {
-    main #welcome p {
-        margin-left: 1%;
-        font-size: 70px;
+@media screen and (max-width: 374px) {
+    header {
+        display: flex;
+        flex-direction: row;
     }
 
-    main #message p {
-        margin-top: 5em;
-        padding-top: 25px;
-        margin-left: 5px;
+    #welcome h1 {
+        font-size: 7vh;
+        max-height: 7vh;
+        margin-left: 2%;
+        margin-top: 20%;
+        margin-right: 2%;
+    }
+
+    #message p {
+        font-size: 3vh;
+        margin-left: 10%;
+        margin-right: 5%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #message p {
+        font-size: 3vh;
+        margin-left: 10%;
+        margin-right: 5%;
+    }
+}
+
+@media screen and (min-width: 374px) {
+    #header-left {
+        float: left;
+        align-items: center;
+    }
+
+    #header-right {
+        float: right;
     }
 }
