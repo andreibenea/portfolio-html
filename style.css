@@ -87,6 +87,34 @@ footer {
         align-items: center;
     }
 
+    #header-left .dropdown {
+        float: right;
+    }
+
+    #header-left .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: black;
+        opacity: 85%;
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        float: none;
+        overflow: visible;
+        color: white;
+        padding: 3px;
+        text-decoration: none;
+        text-align: left;
+        font-weight: normal;
+    }
+
+    #header-left .dropdown:hover .dropdown-content {
+        display: inline-block;
+    }
+
+
+
     #header-right {
         float: right;
     }
