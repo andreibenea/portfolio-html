@@ -65,12 +65,12 @@ nav a {
     padding: 50px;
 }
 
-#wrapper #welcome {
-    font-size: xx-large;
+#welcome h1{
+    font-size: 250%;
 }
 
-#wrapper #message {
-    font-size: larger;
+#message p{
+    font-size: 130%;
 }
 
 footer {
@@ -140,5 +140,13 @@ footer {
     #wrapper {
         clear: both;
         height: 90vh;
+    }
+
+    #welcome h1{
+        font-size: 300%;
+    }
+
+    #message p{
+        font-size: 150%;
     }
 }
