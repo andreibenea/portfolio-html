@@ -3,58 +3,10 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-#wrapper {
-    display: flex;
-    flex-direction: column;
-    clear: both;
-    height: 90vh;
-    margin-left: 2%;
-    margin-right: 2%;
-    padding: 5px;
-    background-color: antiquewhite;
-    color: black;
-    border-radius: 5px;
-}
-
-#contact {
-    float: left;
-}
-
-#header-left .dropdown {
-    float: right;
-}
-
-#header-left a {
-    text-align: center;
-}
-
-#header-left .dropdown-content {
-    display: none;
-    position: absolute;
-    overflow: visible;
-    background-color: black;
-    opacity: 85%;
-    z-index: 1;
-}
-
-.dropdown-content a {
-    float: none;
-    overflow: visible;
-    color: white;
-    padding-left: 3px;
-    padding-right: 3px;
-    text-decoration: none;
-    text-align: left;
-    font-weight: normal;
-}
-
-#header-left .dropdown:hover .dropdown-content {
-    display: inline-flex;
-}
-
 body {
     background-color: black;
     height: 100vh;
+    color: white;
 }
 
 header {
@@ -67,30 +19,58 @@ nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    letter-spacing: 0.15em;
 }
 
 #home {
-    float: left;
     background-image: url('./icons8-home.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 1em;
-    height: 1em;
-    margin-right: 1em;
+    background-position: center;
+    margin: auto;
+    width: 2em;
+    height: 2em;
 }
 
-#welcome h1 {
-    font-size: 15vw;
-    max-height: 10vh;
-    margin-left: 2%;
-    margin-top: 10%;
+.header-left,
+.header-right {
+    text-align: center;
+    padding: 1px;
+    letter-spacing: 0.20em;
+    line-height: 1.5em;
+    margin-top: 3px;
 }
 
-#message p {
-    font-size: 3vw;
-    margin-left: 10%;
-    margin-right: 5%;
+.dropdown-content {
+    display: none;
+}
+
+.dropdown i:hover+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-content a {
+    padding: 5px;
+    font-weight: normal;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    background-color: antiquewhite;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    padding: 50px;
+}
+
+#wrapper #welcome {
+    font-size: xx-large;
+}
+
+#wrapper #message {
+    font-size: larger;
 }
 
 footer {
@@ -98,55 +78,67 @@ footer {
     text-align: center;
 }
 
-@media screen and (max-width: 374px) {
-    header {
+@media screen and (min-width: 426px) {
+    #home {
+        float: left;
+        height: 1.5em;
+        width: 1.5em;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-left {
         display: flex;
         flex-direction: row;
     }
 
-    #welcome h1 {
-        font-size: 7vh;
-        max-height: 7vh;
-        margin-left: 2%;
-        margin-top: 20%;
-        margin-right: 2%;
+    .header-left,
+    .header-right {
+        padding: 0;
+        margin-top: 0;
     }
 
-    #message p {
-        font-size: 3vh;
-        margin-left: 10%;
-        margin-right: 5%;
+    .header-left div {
+        margin-left: 1em;
+        padding-top: 0.10em;
     }
-}
 
-@media screen and (max-width: 425px) {
-    #message p {
-        font-size: 3vh;
-        margin-left: 10%;
-        margin-right: 5%;
+    .dropdown:hover .dropdown-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: absolute;
+        background-color: black;
+        left: 0;
+        margin-right: 25%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
-}
 
-@media screen and (max-width: 1300px) {
+    .dropdown i:hover+.dropdown-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: absolute;
+        background-color: black;
+        left: 0;
+        margin-right: 25%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
     .dropdown-content a {
-        float: none;
-        font-weight: normal;
+        padding-left: 2em;
+        padding-right: 2em;
     }
 
-    #header-left .dropdown:hover .dropdown-content {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-    }
-}
-
-@media screen and (min-width: 374px) {
-    #header-left {
-        float: left;
-    }
-
-    #header-right {
-        float: right;
+    #wrapper {
+        clear: both;
+        height: 90vh;
     }
 }
