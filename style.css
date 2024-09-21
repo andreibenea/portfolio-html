@@ -57,7 +57,7 @@ nav a {
 #wrapper {
     display: flex;
     flex-direction: column;
-    height: 75vh;
+    height: fit-content;
     background-color: antiquewhite;
     color: black;
     text-align: center;
@@ -139,7 +139,16 @@ footer {
 
     #wrapper {
         clear: both;
-        height: 90vh;
+        height: fit-content;
+        min-height: 90vh;
+    }
+
+    #pictures {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
     }
 
     #welcome h1{
