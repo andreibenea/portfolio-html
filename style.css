@@ -16,6 +16,42 @@
     border-radius: 5px;
 }
 
+#contact {
+    float: left;
+}
+
+#header-left .dropdown {
+    float: right;
+}
+
+#header-left a {
+    text-align: center;
+}
+
+#header-left .dropdown-content {
+    display: none;
+    position: absolute;
+    overflow: visible;
+    background-color: black;
+    opacity: 85%;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    overflow: visible;
+    color: white;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: none;
+    text-align: left;
+    font-weight: normal;
+}
+
+#header-left .dropdown:hover .dropdown-content {
+    display: inline-flex;
+}
+
 body {
     background-color: black;
     height: 100vh;
@@ -32,6 +68,16 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     letter-spacing: 0.15em;
+}
+
+#home {
+    float: left;
+    background-image: url('./icons8-home.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+    margin-right: 1em;
 }
 
 #welcome h1 {
@@ -81,39 +127,24 @@ footer {
     }
 }
 
-@media screen and (min-width: 374px) {
-    #header-left {
-        float: left;
-        align-items: center;
-    }
-
-    #header-left .dropdown {
-        float: right;
-    }
-
-    #header-left .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: black;
-        opacity: 85%;
-        z-index: 1;
-    }
-
+@media screen and (max-width: 1300px) {
     .dropdown-content a {
         float: none;
-        overflow: visible;
-        color: white;
-        padding: 3px;
-        text-decoration: none;
-        text-align: left;
         font-weight: normal;
     }
 
     #header-left .dropdown:hover .dropdown-content {
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
     }
+}
 
-
+@media screen and (min-width: 374px) {
+    #header-left {
+        float: left;
+    }
 
     #header-right {
         float: right;
