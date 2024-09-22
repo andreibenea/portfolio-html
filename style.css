@@ -31,13 +31,16 @@ nav a {
     height: 2em;
 }
 
+#contact {
+    margin-top: 10px;
+}
+
 .header-left,
 .header-right {
     text-align: center;
     padding: 1px;
     letter-spacing: 0.20em;
     line-height: 1.5em;
-    margin-top: 3px;
 }
 
 .dropdown-content {
@@ -65,11 +68,11 @@ nav a {
     padding: 50px;
 }
 
-#welcome h1{
+#welcome h1 {
     font-size: 250%;
 }
 
-#message p{
+#message p {
     font-size: 130%;
 }
 
@@ -83,6 +86,10 @@ footer {
         float: left;
         height: 1.5em;
         width: 1.5em;
+    }
+
+    #contact {
+        margin-top: 0px;
     }
 
     nav {
@@ -151,11 +158,11 @@ footer {
         align-items: center;
     }
 
-    #welcome h1{
+    #welcome h1 {
         font-size: 300%;
     }
 
-    #message p{
+    #message p {
         font-size: 150%;
     }
 }
