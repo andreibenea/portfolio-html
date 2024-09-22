@@ -66,6 +66,8 @@ nav a {
     text-align: center;
     border-radius: 5px;
     padding: 50px;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 #welcome h1 {
@@ -74,6 +76,24 @@ nav a {
 
 #message p {
     font-size: 130%;
+}
+
+.title a {
+    text-decoration: none;
+    color: black;
+}
+
+.presentation {
+    flex-direction: column;
+}
+
+img {
+    width: 80%;
+    margin: 10px auto;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 footer {
@@ -148,6 +168,20 @@ footer {
         clear: both;
         height: fit-content;
         min-height: 90vh;
+    }
+
+    .presentation {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .presentation div {
+        flex: 1;
+        margin: 10px;
     }
 
     #pictures {
