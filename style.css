@@ -353,4 +353,8 @@ footer {
         color: white;
     }
 
+    .gallery img {
+        max-width: 320px;
+    }
+
 }
