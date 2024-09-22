@@ -15,6 +15,12 @@ header {
     margin-right: 3%;
 }
 
+td a {
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+}
+
 nav a {
     color: white;
     text-decoration: none;
@@ -65,7 +71,7 @@ nav a {
     color: black;
     text-align: center;
     border-radius: 5px;
-    padding: 50px;
+    padding: 30px;
     max-width: 100%;
     overflow: hidden;
 }
@@ -87,6 +93,35 @@ nav a {
     flex-direction: column;
 }
 
+.table-head {
+    display: flex;
+    justify-content: center;
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+}
+
+td {
+    padding: 2px;
+}
+
+.column-left {
+    text-align: left;
+}
+
+.column-right {
+    text-align: center;
+}
+
+.subtitle {
+    text-align: left;
+}
+
 img {
     width: 80%;
     margin: 10px auto;
@@ -94,6 +129,10 @@ img {
     height: auto;
     object-fit: contain;
     border-radius: 10px;
+}
+
+hr {
+    border-top: solid black;
 }
 
 footer {
@@ -168,6 +207,7 @@ footer {
         clear: both;
         height: fit-content;
         min-height: 90vh;
+        padding: 50px
     }
 
     .presentation {
@@ -199,4 +239,36 @@ footer {
     #message p {
         font-size: 150%;
     }
+
+    .table-head {
+        display: flex;
+        justify-content: center;
+    }
+
+    .table-body {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: stretch;
+        align-items: stretch;
+        width: 90%;
+        margin: auto;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    .column-left {
+        text-align: left;
+    }
+
+    .column-right {
+        text-align: right;
+    }
+
+    .subtitle {
+        text-align: left;
+    }
+
 }
