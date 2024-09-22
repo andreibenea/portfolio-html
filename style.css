@@ -151,6 +151,28 @@ input[type="submit"] {
     color: white;
 }
 
+dl {
+    padding: 5px;
+}
+
+dt {
+    font-weight: bold;
+    padding: 2px;
+}
+
+dd {
+    padding: 2px;
+}
+
+.list {
+    text-align: left;
+}
+
+.list a {
+    text-decoration: none;
+    color: black
+}
+
 footer {
     color: white;
     text-align: center;
