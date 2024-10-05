@@ -53,7 +53,9 @@ nav a {
     display: none;
 }
 
-.dropdown i:hover+.dropdown-content {
+.dropdown i:hover+.dropdown-content,
+.dropdown i:focus+.dropdown-content,
+.dropdown i:active+.dropdown-content {
     display: flex;
     flex-direction: column;
 }
