@@ -1,10 +1,23 @@
+:root {
+    /*Light mode colors*/
+    --body-bg-color-light: #000000;
+    --body-text-color-light: #FFFFFF;
+    --wrapper-bg-color-light: #FAEBD7;
+    --wrapper-text-color-light: #000000;
+    /*Dark mode colors*/
+    --body-bg-color-dark: #FAEBD7;
+    --body-text-color-dark: #000000;
+    --wrapper-bg-color-dark: #000000;
+    --wrapper-text-color-dark: #FAEBD7;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-    background-color: black;
+    background-color: #000000;
     height: 100vh;
     color: white;
 }
@@ -72,7 +85,7 @@ nav a {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    background-color: antiquewhite;
+    background-color: #faebd7;
     color: black;
     text-align: center;
     border-radius: 5px;
