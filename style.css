@@ -182,6 +182,11 @@ footer {
     text-align: center;
 }
 
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
 @media screen and (min-width: 426px) {
     #home {
         float: left;
