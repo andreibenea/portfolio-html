@@ -28,4 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     })
+
+    const toggle = document.getElementById("toggle")
+    toggle.addEventListener("click", (event) => {
+        console.log("Button clicked!")
+    })
 });

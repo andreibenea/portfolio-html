@@ -49,6 +49,16 @@ nav a {
     line-height: 1.5em;
 }
 
+.header-right #toggle {
+    background-image: url('images/icons8-lightbulb-50-white.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+}
+
 #dropdown-content {
     display: none;
 }
@@ -190,6 +200,13 @@ footer a {
 @media screen and (min-width: 426px) {
     #home {
         float: left;
+        height: 1.5em;
+        width: 1.5em;
+    }
+
+    .header-right #toggle {
+        float: right;
+        margin-left: 1em;
         height: 1.5em;
         width: 1.5em;
     }
