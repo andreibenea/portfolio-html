@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
 
+    const currentTheme = localStorage.getItem("theme")
     const toggle = document.getElementById("toggle")
     const home = document.getElementById("home")
     const wrapper = document.getElementById("wrapper")
@@ -36,6 +37,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const anchors = document.getElementsByTagName("a")
     const footers = document.getElementsByTagName("footer")
     const inputs = document.getElementsByTagName("input")
+
+    if (currentTheme == "dark") {
+        document.body.classList.toggle("dark-mode")
+        toggle.classList.toggle("dark-mode")
+        home.classList.toggle("dark-mode")
+        wrapper.classList.toggle("dark-mode")
+        dropdown.classList.toggle("dark-mode")
+        for (const anchor of anchors) {
+            anchor.classList.toggle("dark-mode")
+        }
+        for (const footer of footers) {
+            footer.classList.toggle("dark-mode")
+        }
+        for (const input of inputs) {
+            input.classList.toggle("dark-mode")
+        }
+    }
 
     toggle.addEventListener("click", (event) => {
         document.body.classList.toggle("dark-mode")
@@ -51,6 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         for (const input of inputs) {
             input.classList.toggle("dark-mode")
+        }
+
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
         }
     })
 });
