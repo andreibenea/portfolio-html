@@ -49,18 +49,11 @@ nav a {
     line-height: 1.5em;
 }
 
-.dropdown-content {
+#dropdown-content {
     display: none;
 }
 
-.dropdown i:hover+.dropdown-content,
-.dropdown i:focus+.dropdown-content,
-.dropdown i:active+.dropdown-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.dropdown-content a {
+#dropdown-content a {
     padding: 5px;
     font-weight: normal;
 }
@@ -223,7 +216,7 @@ footer {
         padding-top: 0.10em;
     }
 
-    .dropdown:hover .dropdown-content {
+    #dropdown:hover #dropdown-content {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -235,19 +228,7 @@ footer {
         border-bottom-right-radius: 5px;
     }
 
-    .dropdown i:hover+.dropdown-content {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        position: absolute;
-        background-color: black;
-        left: 0;
-        margin-right: 25%;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-    }
-
-    .dropdown-content a {
+    #dropdown-content a {
         padding-left: 2em;
         padding-right: 2em;
     }
