@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const caret = document.getElementById("caret")
-    console.log(caret)
     caret.addEventListener("click", (event) => {
         const dropdownContent = document.getElementById("dropdown-content")
         const mobileScreen = window.matchMedia("(max-width: 426px)").matches
