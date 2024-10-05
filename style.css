@@ -2,11 +2,17 @@
     /*Light mode colors*/
     --body-bg-color-light: #000000;
     --body-text-color-light: #FFFFFF;
+    --nav-text-color-light: #FFFFFF;
+    --dropdown-bg-color-light: #000000;
+    --dropdown-text-color-light: #FFFFFF;
     --wrapper-bg-color-light: #FAEBD7;
     --wrapper-text-color-light: #000000;
     /*Dark mode colors*/
     --body-bg-color-dark: #FAEBD7;
     --body-text-color-dark: #000000;
+    --nav-text-color-dark: #000000;
+    --dropdown-bg-color-dark: #FAEBD7;
+    --dropdown-text-color-dark: #000000;
     --wrapper-bg-color-dark: #000000;
     --wrapper-text-color-dark: #FAEBD7;
 }
@@ -17,9 +23,15 @@
 }
 
 body {
-    background-color: #000000;
     height: 100vh;
-    color: white;
+    background-color: var(--body-bg-color-light);
+    color: var(--body-text-color-light);
+}
+
+body.dark-mode {
+    height: 100vh;
+    background-color: var(--body-bg-color-dark);
+    color: var(--body-text-color-dark);
 }
 
 header {
@@ -30,18 +42,40 @@ header {
 
 td a {
     text-decoration: none;
-    color: black;
+    color: var(--nav-text-color-dark);
     font-style: italic;
 }
 
-nav a {
-    color: white;
+td a.dark-mode {
+    text-decoration: none;
+    color: var(--wrapper-text-color-dark);
+    font-style: italic;
+}
+
+a {
+    color: var(--nav-text-color-light);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.dark-mode {
+    color: var(--nav-text-color-dark);
     text-decoration: none;
     font-weight: bold;
 }
 
 #home {
     background-image: url('./icons8-home.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+}
+
+#home.dark-mode {
+    background-image: url('./icons8-home-filled.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -72,6 +106,16 @@ nav a {
     height: 2em;
 }
 
+.header-right #toggle.dark-mode {
+    background-image: url('images/icons8-lightbulb-50.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+}
+
 #dropdown-content {
     display: none;
 }
@@ -79,14 +123,34 @@ nav a {
 #dropdown-content a {
     padding: 5px;
     font-weight: normal;
+    color: var(--body-text-color-light);
+}
+
+#dropdown-content a.dark-mode {
+    padding: 5px;
+    font-weight: normal;
+    color: var(--body-text-color-dark);
 }
 
 #wrapper {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    background-color: #faebd7;
-    color: black;
+    background-color: var(--wrapper-bg-color-light);
+    color: var(--wrapper-text-color-light);
+    text-align: center;
+    border-radius: 5px;
+    padding: 30px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#wrapper.dark-mode {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background-color: var(--wrapper-bg-color-dark);
+    color: var(--wrapper-text-color-dark);
     text-align: center;
     border-radius: 5px;
     padding: 30px;
@@ -104,7 +168,12 @@ nav a {
 
 .title a {
     text-decoration: none;
-    color: black;
+    color: var(--nav-text-color-dark);
+}
+
+.title a.dark-mode {
+    text-decoration: none;
+    color: var(--wrapper-text-color-dark);
 }
 
 .presentation {
@@ -164,9 +233,16 @@ form {
 
 input[type="submit"] {
     margin-top: 1em;
-    background-color: black;
+    background-color: var(--body-bg-color-light);
     opacity: 85%;
-    color: white;
+    color: var(--body-text-color-light);
+}
+
+input.dark-mode[type="submit"] {
+    margin-top: 1em;
+    background-color: var(--body-bg-color-dark);
+    opacity: 85%;
+    color: var(--body-text-color-dark);
 }
 
 dl {
@@ -188,7 +264,12 @@ dd {
 
 .list a {
     text-decoration: none;
-    color: black
+    color: var(--wrapper-text-color-light);
+}
+
+.list a.dark-mode {
+    text-decoration: none;
+    color: var(--wrapper-text-color-dark);
 }
 
 .sample {
@@ -200,14 +281,19 @@ dd {
     height: 100vh;
 }
 
-footer {
-    color: white;
+footer p {
+    color: var(--body-text-color-light);
+    text-align: center;
+}
+
+footer.dark-mode p {
+    color: var(--body-text-color-dark);
     text-align: center;
 }
 
 footer a {
     text-decoration: none;
-    color: white;
+    color: var(--body-text-color-light);
 }
 
 @media screen and (min-width: 426px) {
@@ -217,7 +303,20 @@ footer a {
         width: 1.5em;
     }
 
+    #home.dark-mode {
+        float: left;
+        height: 1.5em;
+        width: 1.5em;
+    }
+
     .header-right #toggle {
+        float: right;
+        margin-left: 1em;
+        height: 1.5em;
+        width: 1.5em;
+    }
+
+    .header-right #toggle.dark-mode {
         float: right;
         margin-left: 1em;
         height: 1.5em;
@@ -256,14 +355,27 @@ footer a {
         flex-direction: row;
         flex-wrap: wrap;
         position: absolute;
-        background-color: black;
+        background-color: var(--dropdown-bg-color-light);
         left: 0;
         margin-right: 25%;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
     }
 
-    #dropdown-content a {
+    #dropdown:hover #dropdown-content.dark-mode {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: absolute;
+        background-color: var(--dropdown-bg-color-dark);
+        left: 0;
+        margin-right: 25%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    #dropdown-content a,
+    #dropdown-content a.dark-mode {
         padding-left: 2em;
         padding-right: 2em;
     }
@@ -366,9 +478,17 @@ footer a {
     input[type="submit"] {
         grid-column: 2;
         width: 100%;
-        background-color: black;
+        background-color: var(--body-bg-color-light);
         opacity: 85%;
-        color: white;
+        color: var(--body-text-color-light);
+    }
+
+    input.dark-mode[type="submit"] {
+        grid-column: 2;
+        width: 100%;
+        background-color: var(--body-bg-color-dark);
+        opacity: 85%;
+        color: var(--body-text-color-dark);
     }
 
     .gallery img {

@@ -30,7 +30,27 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     const toggle = document.getElementById("toggle")
+    const home = document.getElementById("home")
+    const wrapper = document.getElementById("wrapper")
+    const dropdown = document.getElementById("dropdown-content")
+    const anchors = document.getElementsByTagName("a")
+    const footers = document.getElementsByTagName("footer")
+    const inputs = document.getElementsByTagName("input")
+
     toggle.addEventListener("click", (event) => {
-        console.log("Button clicked!")
+        document.body.classList.toggle("dark-mode")
+        toggle.classList.toggle("dark-mode")
+        home.classList.toggle("dark-mode")
+        wrapper.classList.toggle("dark-mode")
+        dropdown.classList.toggle("dark-mode")
+        for (const anchor of anchors) {
+            anchor.classList.toggle("dark-mode")
+        }
+        for (const footer of footers) {
+            footer.classList.toggle("dark-mode")
+        }
+        for (const input of inputs) {
+            input.classList.toggle("dark-mode")
+        }
     })
 });
