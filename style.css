@@ -180,6 +180,10 @@ a.dark-mode {
     flex-direction: column;
 }
 
+.scores {
+    margin-top: 50px;
+}
+
 .table-head {
     display: flex;
     justify-content: center;
@@ -401,6 +405,7 @@ footer a {
         justify-content: space-around;
         align-items: center;
         margin: 20px 0;
+        max-height: 600px;
     }
 
     .presentation div {

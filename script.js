@@ -15,7 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (document.title === "Projects :: Rock Paper Scissors") {
-        function playGame() {
+        let playerScore = 0
+        let computerScore = 0
+        const rock = document.getElementById("rock")
+        const paper = document.getElementById("paper")
+        const scissors = document.getElementById("scissors")
+        const computerScoreElement = document.getElementById("computerScore")
+        const playerScoreElement = document.getElementById("playerScore")
+
+        function playGame(playerChoice) {
             function getRandomInt(max) {
                 return Math.floor(Math.random() * max);
             }
@@ -30,76 +38,36 @@ document.addEventListener("DOMContentLoaded", function () {
                 case 2:
                     computerChoice = "scissors"
                     break;
-                default:
-                    console.log("Something went wrong. Please try again!")
-                    break;
             }
-            return computerChoice
-        }
 
-        const rock = document.getElementById("rock")
-        const paper = document.getElementById("paper")
-        const scissors = document.getElementById("scissors")
+            if (computerChoice == playerChoice) {
+                alert("It's a draw!")
+            }
+            else if (computerChoice == "rock" && playerChoice == "paper" ||
+                computerChoice == "paper" && playerChoice == "scissors" ||
+                computerChoice == "scissors" && playerChoice == "rock") {
+                alert("Congratulations, YOU won!")
+                playerScore += 1
+                playerScoreElement.textContent = "Player: " + playerScore
+            }
+            else {
+                alert("The Computer won. Better luck next time!")
+                computerScore += 1
+                computerScoreElement.textContent = "Computer: " + computerScore
+            }
+        }
 
         rock.addEventListener("click", (event) => {
             playerChoice = "rock"
-            computerChoice = playGame()
-            console.log("You chose: " + playerChoice)
-            console.log("Computer chose: " + computerChoice)
-            switch (computerChoice) {
-                case "rock":
-                    alert("It's a draw")
-                    break;
-                case "paper":
-                    alert("The computer has won!")
-                    break;
-                case "scissors":
-                    alert("Congratulations, you won!")
-                    break;
-                default:
-                    console.log("Something went wrong. Please try again!")
-                    break;
-            }
+            playGame(playerChoice)
         })
         paper.addEventListener("click", (event) => {
             playerChoice = "paper"
-            computerChoice = playGame()
-            console.log("You chose: " + playerChoice)
-            console.log("Computer chose: " + computerChoice)
-            switch (computerChoice) {
-                case "rock":
-                    alert("Congratulations, you won!")
-                    break;
-                case "paper":
-                    alert("It's a draw")
-                    break;
-                case "scissors":
-                    alert("The computer has won!")
-                    break;
-                default:
-                    console.log("Something went wrong. Please try again!")
-                    break;
-            }
+            playGame(playerChoice)
         })
         scissors.addEventListener("click", (event) => {
             playerChoice = "scissors"
-            computerChoice = playGame()
-            console.log("You chose: " + playerChoice)
-            console.log("Computer chose: " + computerChoice)
-            switch (computerChoice) {
-                case "rock":
-                    alert("The computer has won!")
-                    break;
-                case "paper":
-                    alert("Congratulations, you won!")
-                    break;
-                case "scissors":
-                    alert("It's a draw")
-                    break;
-                default:
-                    console.log("Something went wrong. Please try again!")
-                    break;
-            }
+            playGame(playerChoice)
         })
     }
 
