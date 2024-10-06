@@ -387,6 +387,13 @@ footer a {
         padding: 50px
     }
 
+    #wrapper.dark-mode {
+        clear: both;
+        height: fit-content;
+        min-height: 90vh;
+        padding: 50px
+    }
+
     .presentation {
         display: flex;
         flex-direction: row;
