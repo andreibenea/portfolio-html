@@ -14,6 +14,95 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    if (document.title === "Projects :: Rock Paper Scissors") {
+        function playGame() {
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+            let computerChoice = getRandomInt(3)
+            switch (computerChoice) {
+                case 0:
+                    computerChoice = "rock"
+                    break;
+                case 1:
+                    computerChoice = "paper"
+                    break;
+                case 2:
+                    computerChoice = "scissors"
+                    break;
+                default:
+                    console.log("Something went wrong. Please try again!")
+                    break;
+            }
+            return computerChoice
+        }
+
+        const rock = document.getElementById("rock")
+        const paper = document.getElementById("paper")
+        const scissors = document.getElementById("scissors")
+
+        rock.addEventListener("click", (event) => {
+            playerChoice = "rock"
+            computerChoice = playGame()
+            console.log("You chose: " + playerChoice)
+            console.log("Computer chose: " + computerChoice)
+            switch (computerChoice) {
+                case "rock":
+                    alert("It's a draw")
+                    break;
+                case "paper":
+                    alert("The computer has won!")
+                    break;
+                case "scissors":
+                    alert("Congratulations, you won!")
+                    break;
+                default:
+                    console.log("Something went wrong. Please try again!")
+                    break;
+            }
+        })
+        paper.addEventListener("click", (event) => {
+            playerChoice = "paper"
+            computerChoice = playGame()
+            console.log("You chose: " + playerChoice)
+            console.log("Computer chose: " + computerChoice)
+            switch (computerChoice) {
+                case "rock":
+                    alert("Congratulations, you won!")
+                    break;
+                case "paper":
+                    alert("It's a draw")
+                    break;
+                case "scissors":
+                    alert("The computer has won!")
+                    break;
+                default:
+                    console.log("Something went wrong. Please try again!")
+                    break;
+            }
+        })
+        scissors.addEventListener("click", (event) => {
+            playerChoice = "scissors"
+            computerChoice = playGame()
+            console.log("You chose: " + playerChoice)
+            console.log("Computer chose: " + computerChoice)
+            switch (computerChoice) {
+                case "rock":
+                    alert("The computer has won!")
+                    break;
+                case "paper":
+                    alert("Congratulations, you won!")
+                    break;
+                case "scissors":
+                    alert("It's a draw")
+                    break;
+                default:
+                    console.log("Something went wrong. Please try again!")
+                    break;
+            }
+        })
+    }
+
     const caret = document.getElementById("caret")
     caret.addEventListener("click", (event) => {
         const dropdownContent = document.getElementById("dropdown-content")
