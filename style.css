@@ -361,7 +361,7 @@ footer a {
     height: 100%;
     object-fit: cover;
     transition: opacity .4s ease;
-    filter: brightness(70%);
+    /* filter: brightness(70%); */
 }
 
 /* Crossfade between light/dark videos */
@@ -384,7 +384,7 @@ body.dark-mode #panel-video-dark {
 /* Overlay above video but below content */
 #wrapper.has-video .panel-overlay {
     z-index: 1;
-    background: rgba(0, 0, 0, .30);
+    /* background: rgba(0, 0, 0, .30); */
 }
 
 #wrapper.has-video.dark-mode .panel-overlay {
@@ -406,6 +406,12 @@ body.dark-mode #panel-video-dark {
 .wrapper-content {
     padding: 1rem 0;
 }
+
+body.dark-mode #panel-video-dark {
+    /* filter: grayscale(100%); */
+    filter: sepia(90%) saturate(100%) brightness(100%) contrast(95%);
+}
+
 
 @media screen and (min-width: 426px) {
     #home {
