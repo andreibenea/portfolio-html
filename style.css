@@ -1,4 +1,6 @@
 :root {
+    --panel-h: clamp(420px, 68vh, 860px);
+    /* tweak to taste */
     /*Light mode colors*/
     --body-bg-color-light: #000000;
     --body-text-color-light: #FFFFFF;
@@ -300,6 +302,111 @@ footer a {
     color: var(--body-text-color-light);
 }
 
+/* ---- Video panel inside #wrapper ---- */
+#wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: var(--panel-h);
+    /* gives the nice “panel” height */
+    background-color: var(--wrapper-bg-color-light);
+    color: var(--wrapper-text-color-light);
+    text-align: center;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 100%;
+    overflow: hidden;
+    /* keeps corners on any media inside */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+#wrapper.dark-mode {
+    background-color: var(--wrapper-bg-color-dark);
+    color: var(--wrapper-text-color-dark);
+}
+
+/* Content stays above anything decorative */
+.wrapper-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Make the background transparent only on video pages */
+#wrapper.has-video {
+    background-color: transparent;
+}
+
+#wrapper.has-video.dark-mode {
+    background-color: transparent;
+}
+
+/* Video + overlay exist only on video pages */
+#wrapper.has-video .panel-video,
+#wrapper.has-video .panel-overlay {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+}
+
+/* Video layer (behind content) */
+#wrapper.has-video .panel-video {
+    z-index: 0;
+    pointer-events: none;
+}
+
+#wrapper.has-video .panel-video video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity .4s ease;
+    filter: brightness(70%);
+}
+
+/* Crossfade between light/dark videos */
+#panel-video-light {
+    opacity: 1;
+}
+
+#panel-video-dark {
+    opacity: 0;
+}
+
+body.dark-mode #panel-video-light {
+    opacity: 0;
+}
+
+body.dark-mode #panel-video-dark {
+    opacity: 1;
+}
+
+/* Overlay above video but below content */
+#wrapper.has-video .panel-overlay {
+    z-index: 1;
+    background: rgba(0, 0, 0, .30);
+}
+
+#wrapper.has-video.dark-mode .panel-overlay {
+    background: rgba(0, 0, 0, .22);
+}
+
+/* Hide overlay container by default on non-video pages */
+.panel-video,
+.panel-overlay {
+    display: none;
+}
+
+#wrapper.has-video .panel-video,
+#wrapper.has-video .panel-overlay {
+    display: block;
+}
+
+/* (Optional) keep some breathing room inside the panel */
+.wrapper-content {
+    padding: 1rem 0;
+}
+
 @media screen and (min-width: 426px) {
     #home {
         float: left;
@@ -364,6 +471,7 @@ footer a {
         margin-right: 25%;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
+        z-index: 3;
     }
 
     #dropdown:hover #dropdown-content.dark-mode {

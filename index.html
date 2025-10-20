@@ -42,13 +42,26 @@
             </div>
         </nav>
     </header>
-    <div id="wrapper">
-        <main>
+    <div id="wrapper" class="has-video">
+        <!-- Panel video background -->
+        <div class="panel-video" aria-hidden="true">
+            <video id="panel-video-light" autoplay muted loop playsinline>
+                <source src="./media/matrix_visuals_light.mp4" type="video/mp4">
+            </video>
+            <video id="panel-video-dark" autoplay muted loop playsinline>
+                <source src="./media/matrix_visuals_dark.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- Optional subtle overlay for readability -->
+        <div class="panel-overlay" aria-hidden="true"></div>
+
+        <main class="wrapper-content">
             <div id="welcome">
                 <h1>Welcome!</h1>
             </div>
             <div id="message">
-                <p>Explore my projects, skills, and creative journey. Let's connect and collaborate to bring new ideas
+                <p>Explore my projects, skills, and creative journey. Let's connect and collaborate to bring new
+                    ideas
                     to
                     life!</p>
             </div>
@@ -68,6 +81,7 @@
             </div>
         </main>
     </div>
+
     <footer>
         <p>Copyright &copy; 2024 Andrei Benea</p>
         <p>Icons by <a href="https://icons8.com/" target="_blank">Icons8</a></p>
