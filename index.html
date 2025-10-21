@@ -13,7 +13,7 @@
     <title>Portfolio</title>
 </head>
 
-<body>
+<body id="index">
     <header>
         <nav>
             <div class="header-left">
@@ -42,25 +42,31 @@
             </div>
         </nav>
     </header>
-    <div id="wrapper">
-        <main>
+    <div id="wrapper" class="has-video">
+        <!-- Panel video background -->
+        <div class="panel-video" aria-hidden="true">
+            <video id="panel-video-light" autoplay muted loop playsinline>
+                <source src="./media/output_5.mp4" type="video/mp4">
+            </video>
+            <video id="panel-video-dark" autoplay muted loop playsinline>
+                <source src="./media/orange.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- Optional subtle overlay for readability -->
+        <div class="panel-overlay" aria-hidden="true"></div>
+
+        <main class="wrapper-content">
             <div id="welcome">
                 <h1>Welcome!</h1>
             </div>
             <div id="message">
-                <p>Explore my projects, skills, and creative journey. Let's connect and collaborate to bring new ideas
+                <p>Explore my projects, skills, and creative journey. Let's connect and collaborate to bring new
+                    ideas
                     to
                     life!</p>
             </div>
             <br><br>
             <div id="pictures">
-                <picture>
-                    <img src="./images/network-briefcase.png" alt="Briefcase" height="135" width="184">
-                </picture>
-                <picture>
-                    <img src="./images/casual-life-3d-megaphone-with-tape.png" alt="Megaphone With Tape" height="310"
-                        width="184">
-                </picture>
                 <picture>
                     <img src="./images/casual-life-3d-side-view-of-man-sitting-in-front-of-laptop-and-talking-on-phone.png"
                         alt="Man with Laptop" height="180" width="184">
@@ -68,6 +74,7 @@
             </div>
         </main>
     </div>
+
     <footer>
         <p>Copyright &copy; 2024 Andrei Benea</p>
         <p>Icons by <a href="https://icons8.com/" target="_blank">Icons8</a></p>

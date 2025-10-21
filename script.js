@@ -134,4 +134,46 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("theme", "light");
         }
     })
+    // --- Video swapping helpers ---
+    function updatePanelVideo() {
+        const vLight = document.getElementById("panel-video-light");
+        const vDark = document.getElementById("panel-video-dark");
+        if (!vLight || !vDark) return;
+
+        const isDark = document.body.classList.contains("dark-mode");
+
+        // Pause the one we don't see, play the active one
+        if (isDark) {
+            vLight.pause();
+            vDark.play().catch(() => { });
+        } else {
+            vDark.pause();
+            vLight.play().catch(() => { });
+        }
+    }
+
+    // Play/pause when tab visibility changes (saves battery/CPU)
+    document.addEventListener("visibilitychange", () => {
+        const vLight = document.getElementById("panel-video-light");
+        const vDark = document.getElementById("panel-video-dark");
+        if (!vLight || !vDark) return;
+
+        const active = document.body.classList.contains("dark-mode") ? vDark : vLight;
+        if (document.hidden) active.pause();
+        else active.play().catch(() => { });
+    });
+
+    // Run once on load
+    document.addEventListener("DOMContentLoaded", updatePanelVideo);
+
+    // Re-run after your theme toggle runs
+    (function hookThemeToggle() {
+        const toggle = document.getElementById("toggle");
+        if (!toggle) return;
+        toggle.addEventListener("click", () => {
+            // your code toggles classes immediately; give the DOM a tick then sync videos
+            setTimeout(updatePanelVideo, 0);
+        });
+    })();
+
 });
