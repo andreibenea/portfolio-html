@@ -134,7 +134,7 @@ a.dark-mode {
     color: var(--body-text-color-dark);
 }
 
-#wrapper {
+/* #wrapper {
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -158,7 +158,7 @@ a.dark-mode {
     padding: 30px;
     max-width: 100%;
     overflow: hidden;
-}
+} */
 
 #welcome h1 {
     font-size: 250%;
@@ -278,14 +278,42 @@ dd {
     color: var(--wrapper-text-color-dark);
 }
 
-.sample {
-    width: 100%;
+/* Make the iframe page fill the panel */
+#wrapper:has(.sample iframe) {
+    padding: 12px;
 }
 
-.sample iframe {
-    width: 100%;
-    height: 100vh;
+#wrapper:has(.sample iframe) main {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
+
+.sample {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: calc(var(--panel-h) - 24px);
+    /* wrapper height minus padding */
+    overflow: hidden;
+    /* <-- clip the scrollbar */
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+    /* display: flex; */
+}
+
+/* Hide scrollbar visually but keep scrolling */
+.sample iframe {
+    display: block;
+    width: calc(100% + 24px);
+    /* make it wider than the clip */
+    height: 100%;
+    border: 0;
+    transform: translateX(-12px);
+    /* recenter; pushes bar outside */
+}
+
 
 footer p {
     color: var(--body-text-color-light);
@@ -307,7 +335,11 @@ footer a {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: var(--panel-h);
     min-height: var(--panel-h);
+    overflow: hidden;
     /* gives the nice “panel” height */
     background-color: var(--wrapper-bg-color-light);
     color: var(--wrapper-text-color-light);
@@ -329,6 +361,22 @@ footer a {
 .wrapper-content {
     position: relative;
     z-index: 2;
+    overflow-y: auto;
+    /* padding: 1rem; */
+    width: 100%;
+    height: 100%;
+    /* full height of wrapper */
+    scroll-behavior: smooth;
+}
+
+.wrapper-content::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+/* Optional: for Firefox */
+.wrapper-content {
+    scrollbar-width: none;
 }
 
 /* Make the background transparent only on video pages */
@@ -410,6 +458,53 @@ body.dark-mode #panel-video-dark {
 body.dark-mode #panel-video-dark {
     /* filter: grayscale(100%); */
     filter: sepia(90%) saturate(100%) brightness(100%) contrast(95%);
+}
+
+/* Only apply scrollable behavior on non-video pages */
+#wrapper:not(.has-video) {
+    height: var(--panel-h);
+    max-height: var(--panel-h);
+    overflow: hidden;
+    /* clip outside the rounded panel */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* <-- was center; show the top */
+}
+
+#wrapper:not(.has-video)>.wrapper-content,
+#wrapper:not(.has-video)>main {
+    /* covers pages that don't use .wrapper-content */
+    flex: 1 1 auto;
+    min-height: 0;
+    /* critical for flex children to allow scrolling */
+    overflow-y: auto;
+    /* padding: 1rem; */
+    scroll-behavior: smooth;
+}
+
+#wrapper:not(.has-video)>.wrapper-content,
+#wrapper:not(.has-video)>main {
+    -webkit-mask-image: linear-gradient(to bottom, #000 88%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, #000 88%, rgba(0, 0, 0, 0) 100%);
+}
+
+
+/* (Optional) hide scrollbars aesthetically, keeps scrolling */
+#wrapper:not(.has-video)>.wrapper-content::-webkit-scrollbar,
+#wrapper:not(.has-video)>main::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+#wrapper:not(.has-video)>.wrapper-content,
+#wrapper:not(.has-video)>main {
+    scrollbar-width: none;
+}
+
+#wrapper:not(.has-video) .wrapper-content {
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 
