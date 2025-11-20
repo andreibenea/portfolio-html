@@ -460,8 +460,8 @@ body.dark-mode #panel-video-dark {
 
 #wrapper:not(.has-video)>.wrapper-content,
 #wrapper:not(.has-video)>main {
-    -webkit-mask-image: linear-gradient(to bottom, #000 88%, rgba(0, 0, 0, 0) 100%);
-    mask-image: linear-gradient(to bottom, #000 88%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 96%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, #000 96%, rgba(0, 0, 0, 0) 100%);
 }
 
 
