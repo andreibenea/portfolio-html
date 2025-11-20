@@ -240,7 +240,7 @@ dd {
 }
 
 .list {
-    text-align: left;
+    text-align: justify;
 }
 
 .list a {
@@ -763,7 +763,7 @@ body.dark-mode .form input[type="submit"] {
     }
 
     .column-left {
-        text-align: left;
+        text-align: justify;
     }
 
     .column-right {
