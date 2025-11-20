@@ -594,6 +594,81 @@ body.dark-mode .form input[type="submit"] {
     opacity: .85;
 }
 
+/* === Demo info vertical overlay (Digital Recipe Book page) === */
+
+#wrapper:has(.demo-info) {
+    position: relative;          /* already set, safe to repeat */
+}
+
+/* Container pinned to the left, centered vertically, over the iframe */
+.demo-info {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 5;
+    display: flex;
+    align-items: stretch;
+    font-size: 0.95rem;
+    color: #f5f5f5;
+}
+
+/* Vertical header tab that always stays visible */
+.demo-info-header {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);   /* so text reads top-to-bottom */
+    background: #222;
+    padding: 0.75rem 0.6rem;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+}
+
+.demo-info-header span {
+    font-weight: 700;
+}
+
+/* Rotate the caret so “down” means “open” even in vertical mode */
+.demo-info-header #demo-caret {
+    transform: rotate(90deg);
+}
+
+/* Panel that slides out over the iframe */
+.demo-info-content {
+    background: #222;
+    padding: 1rem 1.5rem;
+    width: min(360px, 70vw);
+    max-height: clamp(220px, 60vh, 360px);
+    overflow: auto;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Collapse state: only the vertical tab is visible */
+.demo-info:not(.demo-open) .demo-info-content {
+    display: none;
+}
+
+/* Small tweaks for dark mode */
+body.dark-mode .demo-info-header,
+body.dark-mode .demo-info-content {
+    background: #111;
+}
+
+/* Inline code styling inside the panel */
+.demo-info-content code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+
 /* Stack labels/fields on small phones only */
 @media (max-width: 560px) {
     .form form {

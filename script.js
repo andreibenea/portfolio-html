@@ -175,5 +175,14 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(updatePanelVideo, 0);
         });
     })();
+    // --- Demo info dropdown (for iframe instructions) ---
+    const demoHeader = document.querySelector(".demo-info-header");
+    const demoWrapper = document.querySelector(".demo-info");
+
+    if (demoHeader && demoWrapper) {
+        demoHeader.addEventListener("click", () => {
+            demoWrapper.classList.toggle("demo-open");
+        });
+    }
 
 });
