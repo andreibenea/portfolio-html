@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="C-Eleven: A browser-playable text adventure built in Python, running via Pyodide and integrated into my portfolio.">
+    <link rel="shortcut icon" href="../../favicon-portfolio-32.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+    <script src="../../script.js"></script>
+
+    <!-- Pyodide runtime -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+    <!-- Game glue code -->
+    <script src="../../games/c-eleven/main.js" defer></script>
+
+    <title>Projects :: C-Eleven Text Adventure</title>
+
+    <style>
+        #wrapper:not(.has-video) {
+            height: 85%;
+            min-height: auto;
+            max-height: none;
+            justify-content: flex-start;
+            /* no vertical centering gap */
+        }
+
+        #wrapper:not(.has-video)>.wrapper-content,
+        #wrapper:not(.has-video)>main {
+            -webkit-mask-image: none !important;
+            mask-image: none !important;
+        }
+
+        /* On this page, let the terminal hug the wrapper fully */
+        .wrapper-content {
+            padding: 0;
+        }
+
+        /* Make the content panel still use your existing sizing */
+        .sample {
+            display: flex;
+            flex: 1 1 auto;
+            min-width: 0;
+            min-height: 0;
+            width: 100%;
+            height: 100%;
+            /* height: calc(var(--panel-h) - 24px); */
+        }
+
+        /* === Fallout / RobCo style terminal === */
+
+        #game-terminal {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: #020f08;
+            color: #9efc6a;
+            border-radius: 10px;
+            border: 2px solid #3aff74;
+            box-shadow:
+                0 0 30px rgba(0, 255, 153, 0.3),
+                0 12px 32px rgba(0, 0, 0, 0.8);
+            font-family: "VT323", ui-monospace, SFMono-Regular, Menlo, Monaco,
+                Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 1rem;
+            overflow: hidden;
+        }
+
+        #game-terminal .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0.8rem;
+            background: #001b12;
+            border-bottom: 2px solid #3aff74;
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #3aff74;
+        }
+
+        #game-terminal .dots {
+            display: flex;
+            gap: 0.35rem;
+            margin-right: 0.5rem;
+            align-items: center;
+        }
+
+        #game-terminal .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: #3aff74;
+            box-shadow: 0 0 8px rgba(58, 255, 116, 0.8);
+        }
+
+        /* Main output area */
+        #output {
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 1.25rem 2.5rem;
+            overflow-y: auto;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            color: #3aff74;
+            background:
+                repeating-linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.4) 0px,
+                    rgba(0, 0, 0, 0.4) 1px,
+                    transparent 1px,
+                    transparent 3px),
+                radial-gradient(circle at top, #041510 0, #020b07 40%, #000000 100%);
+            text-shadow: 0 0 4px rgba(158, 252, 106, 0.8);
+            text-align: left;
+            scrollbar-width: none;
+            margin: 0 auto;
+        }
+
+        #output .line {
+            margin-bottom: 0.25rem;
+        }
+
+        #output .line.scene {
+            margin: 0.75rem 0 1.5rem;
+            text-align: justify;
+            color: #3aff74
+        }
+
+        #output .line.help {
+            margin: 0.75rem 0 1.5rem;
+            /* text-align: left; */
+            color: #FAEBD7;
+        }
+
+        #output .line.system {
+            color: #3aff74;
+        }
+
+        #output .line.dialogue_npc {
+            color: rgba(224, 170, 255, 0.733);
+        }
+
+        #output .line.event {
+            color: orange;
+        }
+
+        #output .line.player {
+            /* text-align: left !important; */
+            color: #FAEBD7;
+        }
+
+        #output .line.choice {
+            /* text-align: left !important; */
+            color: #FAEBD7;
+        }
+
+        #output .line.hint {
+            color: #f8ffb3;
+            font-style: italic;
+            text-shadow: 0 0 4px rgba(248, 255, 179, 0.9);
+            text-align: center;
+        }
+
+        /* Command bar (fixes full-width issue too) */
+        #command-form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            border-top: 2px solid #3aff74;
+            padding: 0.45rem 0.75rem;
+            margin: 0;
+            background: #000000;
+        }
+
+        #command-form .prompt {
+            color: #6cff9e;
+            font-size: 1rem;
+        }
+
+        #input {
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+            background: #000000;
+            border-radius: 6px;
+            border: 1px solid #3aff74;
+            padding: 0.35rem 0.6rem;
+            color: #FAEBD7;
+            outline: none;
+            font-size: 1rem;
+            font-family: "VT323", ui-monospace, SFMono-Regular, Menlo, Monaco,
+                Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        #input::placeholder {
+            color: #3f7f55;
+        }
+
+        #input:focus {
+            border-color: #9effc4;
+            box-shadow: 0 0 0 1px rgba(158, 255, 196, 0.4);
+        }
+
+        #command-form button {
+            border-radius: 6px;
+            border: 1px solid #3aff74;
+            padding: 0.4rem 0.9rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            background: #3aff74;
+            color: #00150e;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.1s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        #command-form button:hover {
+            background: #9effc4;
+            box-shadow:
+                0 0 0 1px rgba(158, 255, 196, 0.6),
+                0 0 12px rgba(158, 255, 196, 0.8);
+            transform: translateY(-1px);
+        }
+
+        #command-form button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        /* Status bar */
+        #status {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.8rem;
+            color: #7fbf8a;
+            background: #000000;
+            border-top: 1px solid #13341f;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+        }
+
+        .status-bar {
+            text-align: center
+                /* keep class name for JS, styling handled above */
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="header-left">
+                <a href="../../index.html">
+                    <div id="home"></div>
+                </a>
+                <div id="about">
+                    <a href="../about.html">ABOUT ME</a>
+                </div>
+                <div id="dropdown">
+                    <a href="../projects.html">PROJECTS</a>
+                    <i class="fa fa-caret-down" id="caret"></i>
+                    <div id="dropdown-content">
+                        <a href="./kreativ-sample.html">Kreativstorm</a>
+                        <a href="./calculator.html">Calculator</a>
+                        <a href="./rock-paper-scissors.html">Rock-Paper-Scissors</a>
+                        <a href="./shopping-manager.html">Shopping Manager</a>
+                        <a href="./digital-recipe-book.html">Digital Recipe Book</a>
+                        <a href="./helistrike.html">HeliStrike</a>
+                        <a href="./static-site-generator-showcase.html">Static Site Generator</a>
+                        <a href="./c-eleven.html">C11: Vault 656</a>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../contact.html">CONTACT</a>
+                <div id="toggle"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="wrapper">
+        <main class="wrapper-content">
+            <div class="sample">
+                <div id="game-terminal">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span>C-Eleven — Vault 656 Terminal</span>
+                    </div>
+
+                    <div id="output"></div>
+
+                    <form id="command-form">
+                        <span class="prompt">&gt;</span>
+                        <input id="input" type="text" autocomplete="off"
+                            placeholder="Type a command (help, look, examine bed, talk intercom)..." />
+                        <button type="submit">Send</button>
+                    </form>
+
+                    <div class="status-bar" id="status">Loading Python runtime…</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2025 Andrei Benea</p>
+        <p>Icons by <a href="https://icons8.com/" target="_blank">Icons8</a></p>
+    </footer>
+</body>
+
+</html>
