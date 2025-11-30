@@ -142,7 +142,7 @@ c11 = {
             # optional: custom text or event when attempting to open
             "on_attempt": None,
             "on_unlock": "A soft chime sounds as the door's status light shifts from yellow to green.",
-        }
+        },
     },
     "flags": {},
 }
