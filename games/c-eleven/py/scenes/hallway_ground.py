@@ -53,6 +53,15 @@ hallway_ground = {
             "can_talk": False,
             "is_exit": True,
         },
+        "med_bay_door": {
+            "id": "med_bay_door",
+            "kind": "actionable",
+            "description": "A heavy bulkhead door leading toward the Med Lab.",
+            "description_unlocked": "A heavy bulkhead door leading toward the Med Lab.",
+            "can_take": False,
+            "can_talk": False,
+            "is_exit": True,
+        },
     },
     "exits": {
         "c11door": {
@@ -89,13 +98,24 @@ hallway_ground = {
             "on_unlock": None,
         },
         "stairwell": {
-            "destination": "hallway_upper",
+            "destination": "under_construction",
             "status": "unlocked",
             "unlocked_via": None,
             "required_item": None,
             "unlock_on_use": False,
             "description_locked": "A metal stairwell leading to the upper floor.",
             "description_unlocked": "A metal stairwell leading to the upper floor.",
+            "on_attempt": None,
+            "on_unlock": None,
+        },
+        "med_bay_door": {
+            "destination": "med_bay",
+            "status": "unlocked",  # locked | unlocked | jammed | sealed
+            "unlocked_via": None,
+            "required_item": None,
+            "unlock_on_use": False,
+            "description_locked": "The door to Quarters C-11. Your room.",
+            "description_unlocked": "The door to Quarters C-11. Your room.",
             "on_attempt": None,
             "on_unlock": None,
         },
