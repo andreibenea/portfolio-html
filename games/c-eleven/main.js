@@ -10,6 +10,9 @@ const submitBtn = formEl.querySelector('button[type="submit"]');
 let pyodideReadyPromise = null;
 let gameOver = false;
 
+const cmdHistory = [];
+let cmdHistoryIndex = -1;
+
 // From the HTML page location (pages/projects/...), this resolves to /games/c-eleven/py/
 const PY_ROOT = "../../games/c-eleven/py";
 
@@ -170,6 +173,13 @@ formEl.addEventListener("submit", async (e) => {
   if (!cmd) return;
 
   appendPlayerCommand(cmd);
+
+  if (cmdHistory.length === 0 || cmdHistory[cmdHistory.length - 1] !== cmd) {
+    cmdHistory.push(cmd);
+  }
+
+  cmdHistoryIndex = cmdHistory.length;
+
   inputEl.value = "";
 
   const pyodide = await ensurePyodide();
@@ -177,6 +187,42 @@ formEl.addEventListener("submit", async (e) => {
   const events = await pyodide.runPythonAsync("handle_input(command_text)");
   renderEvents(events);
 });
+
+
+inputEl.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp") {
+    if (cmdHistory.length === 0) return;
+
+    // Move up in history (but not past 0)
+    if (cmdHistoryIndex > 0) {
+      cmdHistoryIndex--;
+    } else {
+      cmdHistoryIndex = 0;
+    }
+
+    inputEl.value = cmdHistory[cmdHistoryIndex];
+    // Put cursor at end
+    inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
+    e.preventDefault(); 
+  }
+
+  if (e.key === "ArrowDown") {
+    if (cmdHistory.length === 0) return;
+
+    // Move down in history, or clear at the end
+    if (cmdHistoryIndex < cmdHistory.length - 1) {
+      cmdHistoryIndex++;
+      inputEl.value = cmdHistory[cmdHistoryIndex];
+    } else {
+      cmdHistoryIndex = cmdHistory.length;
+      inputEl.value = "";
+    }
+
+    inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
+    e.preventDefault();
+  }
+});
+
 
 window.addEventListener("load", async () => {
   appendLine("Initializing Vault 656 systems…", "system");
