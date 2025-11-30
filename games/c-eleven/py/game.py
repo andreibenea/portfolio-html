@@ -426,6 +426,10 @@ Keep commands simple: one verb plus a target or modifier.""",
                     ):
                         self.player.in_dialog = not self.player.in_dialog
                         self.talking_to = npc.id
+                        self.output.emit(f"{self.dialog_intro}")
+                        self.output.emit(
+                            f"{self.dialog_intro_dialogue}", "dialogue_npc"
+                        )
                         lines = self.player.talk(self)
                         for line in lines:
                             self.output.emit(line, "choice")

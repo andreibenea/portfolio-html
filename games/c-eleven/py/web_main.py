@@ -6,7 +6,6 @@ from world import World
 from event_emitter import Output
 from game import Game
 from scenes import SCENES
-import sys
 
 
 def create_world():
@@ -26,6 +25,18 @@ def create_world():
         ),
         scene_id="j23",
         dialog_id="juno_j23",
+    )
+
+    riley = NonPlayerCharacter(
+        id="riley",
+        name="Riley",
+        description=(
+            "Riley, a maintenance tech in a grease-stained jumpsuit, leans against "
+            "a cart stacked with tools and an open diagnostics tablet. Their eyes "
+            "flick to the door every few seconds, like they're expecting trouble."
+        ),
+        scene_id="med_bay",
+        dialog_id="riley_med_bay",
     )
 
     security_guard_one = NonPlayerCharacter(
@@ -50,10 +61,23 @@ def create_world():
         dialog_id=None,
     )
 
+    warden = NonPlayerCharacter(
+        id="warden",
+        name="WARDEN",
+        description=(
+            "WARDEN's hologram manifests as a faceted mask of blue light, eyes "
+                "reduced to scanning glyphs that flicker in unreadable patterns."
+        ),
+        scene_id="data_core",
+        dialog_id="warden_data_core",
+    )
+
     npcs = {
         "juno": juno,
+        "riley": riley,
         "security_guard_one": security_guard_one,
         "overseer": overseer,
+        "warden": warden,
     }
 
     output = Output()
