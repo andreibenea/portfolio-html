@@ -5,88 +5,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Rock-Paper-Scissors Game: An interactive JavaScript game demonstrating basic game logic, alert prompts, and user input handling. Click to play!">
+          content="Rock-Paper-Scissors Game: An interactive JavaScript game demonstrating basic game logic, alert prompts, and user input handling. Click to play!">
     <link rel="shortcut icon" href="../../favicon-portfolio-32.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" media="screen" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="../../script.js"></script>
     <title>Projects :: Rock Paper Scissors</title>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZFTQDRFQL"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
 
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-SZFTQDRFQL');
+</script>
 <body>
-    <header>
-        <nav>
-            <div class="header-left">
-                <a href="../../index.html">
-                    <div id="home"></div>
-                </a>
-                <div id="about">
-                    <a href="../about.html">ABOUT ME</a>
-                </div>
-                <div id="dropdown">
-                    <a href="../projects.html">PROJECTS</a>
-                    <i class="fa fa-caret-down" id="caret"></i>
-                    <div id="dropdown-content">
-                        <a href="./digital-recipe-book.html">Digital Recipe Book</a>
-                        <a href="./c-eleven.html">C11: Vault 656</a>
-                        <a href="./static-site-generator-showcase.html">Static Site Generator</a>
-                        <a href="./kreativ-sample.html">Kreativstorm</a>
-                        <a href="./helistrike.html">HeliStrike</a>
-                        <a href="./shopping-manager.html">Shopping Manager</a>
-                        <a href="./calculator.html">Calculator</a>
-                        <a href="./rock-paper-scissors.html">Rock-Paper-Scissors</a>
-                    </div>
+<header>
+    <nav>
+        <div class="header-left">
+            <a href="../../index.html">
+                <div id="home"></div>
+            </a>
+            <div id="about">
+                <a href="../about.html">ABOUT ME</a>
+            </div>
+            <div id="dropdown">
+                <a href="../projects.html">PROJECTS</a>
+                <i class="fa fa-caret-down" id="caret"></i>
+                <div id="dropdown-content">
+                    <a href="./digital-recipe-book.html">Digital Recipe Book</a>
+                    <a href="./c-eleven.html">C11: Vault 656</a>
+                    <a href="./static-site-generator-showcase.html">Static Site Generator</a>
+                    <a href="./kreativ-sample.html">Kreativstorm</a>
+                    <a href="./helistrike.html">HeliStrike</a>
+                    <a href="./shopping-manager.html">Shopping Manager</a>
+                    <a href="./calculator.html">Calculator</a>
+                    <a href="./rock-paper-scissors.html">Rock-Paper-Scissors</a>
                 </div>
             </div>
-            <div class="header-right">
-                <a href="../contact.html">CONTACT</a>
-                <div id="toggle"></div>
+        </div>
+        <div class="header-right">
+            <a href="../contact.html">CONTACT</a>
+            <div id="toggle"></div>
+        </div>
+    </nav>
+</header>
+<div id="wrapper">
+    <main>
+        <section class="title">
+            <h1>Rock Paper Scissors</h1>
+            <a href="https://kreativjs.github.io/rock-paper-scissors/" target="_blank">
+                <p>Click Here to Play Game!</p>
+            </a>
+            <p>Or try clicking on the images below...</p>
+        </section>
+        <section class="presentation">
+            <div id="rock">
+                <picture>
+                    <img src="../../images/atomic-rock.png" alt="Rock">
+                </picture>
             </div>
-        </nav>
-    </header>
-    <div id="wrapper">
-        <main>
-            <section class="title">
-                <h1>Rock Paper Scissors</h1>
-                <a href="https://kreativjs.github.io/rock-paper-scissors/" target="_blank">
-                    <p>Click Here to Play Game!</p>
-                </a>
-                <p>Or try clicking on the images below...</p>
-            </section>
-            <section class="presentation">
-                <div id="rock">
-                    <picture>
-                        <img src="../../images/atomic-rock.png" alt="Rock">
-                    </picture>
-                </div>
-                <div id="paper">
-                    <picture>
-                        <img src="../../images/social-paper-bag.png" alt="Paper">
-                    </picture>
-                </div>
-                <div id="scissors">
-                    <picture>
-                        <img src="../../images/flame-scissors-2.png" alt="Scissors">
-                    </picture>
-                </div>
-            </section>
-            <section class="scores">
+            <div id="paper">
+                <picture>
+                    <img src="../../images/social-paper-bag.png" alt="Paper">
+                </picture>
+            </div>
+            <div id="scissors">
+                <picture>
+                    <img src="../../images/flame-scissors-2.png" alt="Scissors">
+                </picture>
+            </div>
+        </section>
+        <section class="scores">
                 <span id="playerScore">
                     Player: 0
                 </span>
-                |
-                <span id="computerScore">
+            |
+            <span id="computerScore">
                     Computer: 0
                 </span>
-            </section>
-            <br>
-            <br>
-        </main>
-    </div>
-    <footer>
-        <p>Copyright &copy; 2025 Andrei Benea</p>
-        <p>Icons by <a href="https://icons8.com/" target="_blank">Icons8</a></p>
-    </footer>
+        </section>
+        <br>
+        <br>
+    </main>
+</div>
+<footer>
+    <p>Copyright &copy; 2025 Andrei Benea</p>
+    <p>Icons by <a href="https://icons8.com/" target="_blank">Icons8</a></p>
+</footer>
 </body>
 
 </html>
