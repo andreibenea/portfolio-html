@@ -184,6 +184,7 @@ td {
 
 .column-right {
     text-align: center;
+    font-style: italic;
 }
 
 .subtitle {
@@ -200,7 +201,9 @@ img {
 }
 
 hr {
-    border-top: solid black;
+    border: none;
+    border-top: 1px solid black;
+    height: 0;
 }
 
 form {
@@ -287,6 +290,24 @@ dd {
     border: 0;
     transform: translateX(-12px);
     /* recenter; pushes bar outside */
+}
+
+.external-link-icon {
+    width: 10px;
+    height: 10px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+a:hover .external-link-icon {
+    opacity: 1;
+}
+
+.download-icon {
+    width: 10px;
+    height: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
 }
 
 
@@ -447,8 +468,8 @@ body.dark-mode #panel-video-dark {
     /* <-- was center; show the top */
 }
 
-#wrapper:not(.has-video)>.wrapper-content,
-#wrapper:not(.has-video)>main {
+#wrapper:not(.has-video) > .wrapper-content,
+#wrapper:not(.has-video) > main {
     /* covers pages that don't use .wrapper-content */
     flex: 1 1 auto;
     min-height: 0;
@@ -458,22 +479,22 @@ body.dark-mode #panel-video-dark {
     scroll-behavior: smooth;
 }
 
-#wrapper:not(.has-video)>.wrapper-content,
-#wrapper:not(.has-video)>main {
+#wrapper:not(.has-video) > .wrapper-content,
+#wrapper:not(.has-video) > main {
     -webkit-mask-image: linear-gradient(to bottom, #000 96%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(to bottom, #000 96%, rgba(0, 0, 0, 0) 100%);
 }
 
 
 /* (Optional) hide scrollbars aesthetically, keeps scrolling */
-#wrapper:not(.has-video)>.wrapper-content::-webkit-scrollbar,
-#wrapper:not(.has-video)>main::-webkit-scrollbar {
+#wrapper:not(.has-video) > .wrapper-content::-webkit-scrollbar,
+#wrapper:not(.has-video) > main::-webkit-scrollbar {
     width: 0;
     background: transparent;
 }
 
-#wrapper:not(.has-video)>.wrapper-content,
-#wrapper:not(.has-video)>main {
+#wrapper:not(.has-video) > .wrapper-content,
+#wrapper:not(.has-video) > main {
     scrollbar-width: none;
 }
 
@@ -523,7 +544,6 @@ body.dark-mode #panel-video-dark {
 #wrapper:has(.form) .form {
     scrollbar-width: none;
 }
-
 
 
 #wrapper.dark-mode:has(.form) .form {
@@ -589,7 +609,7 @@ body.dark-mode .form input[type="submit"] {
     font-size: clamp(1.25rem, 1.8vw, 1.6rem);
 }
 
-.form>p {
+.form > p {
     margin: 0 0 1rem;
     opacity: .85;
 }
@@ -597,7 +617,7 @@ body.dark-mode .form input[type="submit"] {
 /* === Demo info vertical overlay (Digital Recipe Book page) === */
 
 #wrapper:has(.demo-info) {
-    position: relative;          /* already set, safe to repeat */
+    position: relative; /* already set, safe to repeat */
 }
 
 /* Container pinned to the left, centered vertically, over the iframe */
@@ -616,7 +636,7 @@ body.dark-mode .form input[type="submit"] {
 /* Vertical header tab that always stays visible */
 .demo-info-header {
     writing-mode: vertical-rl;
-    transform: rotate(180deg);   /* so text reads top-to-bottom */
+    transform: rotate(180deg); /* so text reads top-to-bottom */
     background: #222;
     padding: 0.75rem 0.6rem;
     border-radius: 0 8px 8px 0;
@@ -668,9 +688,101 @@ body.dark-mode .demo-info-content {
     font-size: 0.9em;
 }
 
+.table-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+.header-name {
+    font-size: small;
+}
+
+.header-name h2 {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* or flex-start, space-between, etc. */
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.social-links .externals {
+    display: flex;
+}
+
+.social-links a {
+    color: black;
+    font-weight: normal;
+}
+
+.document-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.document-links a {
+    color: black;
+    font-weight: normal;
+}
+
+.about-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.row-left {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.row-left-title {
+    font-weight: bold;
+    padding-right: 1rem;
+}
+
+
+.row-right {
+    font-style: italic;
+    text-align: left;
+}
+
+.about-work-description {
+    text-align: justify;
+}
 
 /* Stack labels/fields on small phones only */
 @media (max-width: 560px) {
+    .about-work-description {
+        text-align: left;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+    }
+
     .form form {
         grid-template-columns: 1fr;
     }
@@ -687,7 +799,6 @@ body.dark-mode .demo-info-content {
 }
 
 
-
 @media screen and (min-width: 426px) {
     #home {
         float: left;
@@ -699,6 +810,10 @@ body.dark-mode .demo-info-content {
         float: left;
         height: 1.5em;
         width: 1.5em;
+    }
+
+    .wrapper-content #about_page {
+        width: 80%;
     }
 
     .header-right #toggle {
@@ -824,13 +939,13 @@ body.dark-mode .demo-info-content {
     }
 
     .table-body {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-content: stretch;
-        align-items: stretch;
-        width: 90%;
-        margin: auto;
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*flex-wrap: wrap;*/
+        /*align-content: stretch;*/
+        /*align-items: stretch;*/
+        /*width: 90%;*/
+        /*margin: auto;*/
     }
 
     td {
@@ -853,5 +968,4 @@ body.dark-mode .demo-info-content {
     .gallery img {
         max-width: 320px;
     }
-
 }
