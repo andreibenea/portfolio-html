@@ -725,8 +725,12 @@ body.dark-mode .demo-info-content {
 }
 
 .social-links a {
-    color: black;
+    color: var(--wrapper-text-color-light);
     font-weight: normal;
+}
+
+.social-links a.dark-mode {
+    color: var(--wrapper-text-color-dark);
 }
 
 .document-links {
@@ -738,7 +742,12 @@ body.dark-mode .demo-info-content {
 }
 
 .document-links a {
-    color: black;
+    color: var(--wrapper-text-color-light);
+    font-weight: normal;
+}
+
+.document-links a.dark-mode {
+    color: var(--wrapper-text-color-dark);
     font-weight: normal;
 }
 

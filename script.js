@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             function getRandomInt(max) {
                 return Math.floor(Math.random() * max);
             }
+
             let computerChoice = getRandomInt(3)
             switch (computerChoice) {
                 case 0:
@@ -42,15 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (computerChoice == playerChoice) {
                 alert("It's a draw!")
-            }
-            else if (computerChoice == "rock" && playerChoice == "paper" ||
+            } else if (computerChoice == "rock" && playerChoice == "paper" ||
                 computerChoice == "paper" && playerChoice == "scissors" ||
                 computerChoice == "scissors" && playerChoice == "rock") {
                 alert("Congratulations, YOU won!")
                 playerScore += 1
                 playerScoreElement.textContent = "Player: " + playerScore
-            }
-            else {
+            } else {
                 alert("The Computer won. Better luck next time!")
                 computerScore += 1
                 computerScoreElement.textContent = "Computer: " + computerScore
@@ -79,8 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (dropdownContent.style.display == "none") {
                 dropdownContent.style.display = "flex"
                 dropdownContent.style.flexDirection = "column"
-            }
-            else {
+            } else {
                 dropdownContent.style.display = "none"
             }
         }
@@ -92,6 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const wrapper = document.getElementById("wrapper")
     const dropdown = document.getElementById("dropdown-content")
     const anchors = document.getElementsByTagName("a")
+    const socialLinks = document.getElementsByClassName("social-links")
+    const documentLinks = document.getElementsByClassName("document-links")
     const footers = document.getElementsByTagName("footer")
     const inputs = document.getElementsByTagName("input")
 
@@ -109,6 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         for (const input of inputs) {
             input.classList.toggle("dark-mode")
+        }
+        for (const socialLink of socialLinks) {
+            socialLink.classList.toggle("dark-mode")
+        }
+        for (const documentLink of documentLinks) {
+            documentLink.classList.toggle("dark-mode")
         }
     }
 
@@ -134,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("theme", "light");
         }
     })
+
     // --- Video swapping helpers ---
     function updatePanelVideo() {
         const vLight = document.getElementById("panel-video-light");
@@ -145,10 +152,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Pause the one we don't see, play the active one
         if (isDark) {
             vLight.pause();
-            vDark.play().catch(() => { });
+            vDark.play().catch(() => {
+            });
         } else {
             vDark.pause();
-            vLight.play().catch(() => { });
+            vLight.play().catch(() => {
+            });
         }
     }
 
@@ -160,7 +169,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const active = document.body.classList.contains("dark-mode") ? vDark : vLight;
         if (document.hidden) active.pause();
-        else active.play().catch(() => { });
+        else active.play().catch(() => {
+        });
     });
 
     // Run once on load
