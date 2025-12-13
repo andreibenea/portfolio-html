@@ -707,7 +707,7 @@ body.dark-mode .demo-info-content {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: center; /* or flex-start, space-between, etc. */
+    justify-content: center;
     font-weight: bold;
     margin-bottom: 0.3rem;
 }
@@ -725,8 +725,12 @@ body.dark-mode .demo-info-content {
 }
 
 .social-links a {
-    color: black;
+    color: var(--wrapper-text-color-light);
     font-weight: normal;
+}
+
+.social-links a.dark-mode {
+    color: var(--wrapper-text-color-dark);
 }
 
 .document-links {
@@ -738,7 +742,12 @@ body.dark-mode .demo-info-content {
 }
 
 .document-links a {
-    color: black;
+    color: var(--wrapper-text-color-light);
+    font-weight: normal;
+}
+
+.document-links a.dark-mode {
+    color: var(--wrapper-text-color-dark);
     font-weight: normal;
 }
 
@@ -775,10 +784,20 @@ body.dark-mode .demo-info-content {
     text-align: justify;
 }
 
+.projects-description {
+    padding-bottom: 1rem;
+}
+
 /* Stack labels/fields on small phones only */
 @media (max-width: 560px) {
     .about-work-description {
         text-align: left;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+    }
+
+    .list {
+        text-align: center;
         hyphens: auto;
         -webkit-hyphens: auto;
     }
